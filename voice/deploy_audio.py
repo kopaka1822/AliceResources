@@ -8,9 +8,28 @@ OVERWRITE = True  # Set to False to skip existing files
 SAMPLE_RATE = 44100  # Configurable sample rate (44100 by default)
 FORCE_MONO = True  # Force mono audio for mp3 export
 
-def convert_and_copy_audio(source_file, destination_file):
+# Character-specific settings
+CHARACTER_SETTINGS = {
+    "alice": {"gain": 6}, 
+    "n": {"gain": 6},   
+}
+
+def get_character_settings(file_name):
+    """
+    Extract the character prefix from the file name and return the settings.
+    Default to no gain adjustment if no specific settings are found.
+    """
+    # Extract prefix by removing digits and extension
+    prefix = ''.join([c for c in os.path.splitext(file_name)[0] if not c.isdigit()]).rstrip('_')
+    return CHARACTER_SETTINGS.get(prefix, {"gain": 0})
+
+def convert_and_copy_audio(source_file, destination_file, gain):
     # Load audio file
     audio = AudioSegment.from_file(source_file)
+
+    # Apply character-specific gain
+    if gain != 0:
+        audio = audio + gain
 
     # Apply sample rate and mono settings
     audio = audio.set_frame_rate(SAMPLE_RATE)
@@ -40,8 +59,12 @@ def process_files():
             print(f"Skipping existing file: {destination_file_path}")
             continue
 
+        # Get character-specific settings
+        settings = get_character_settings(file_name)
+        gain = settings.get("gain", 0)
+
         # Convert and copy the file to the destination directory
-        convert_and_copy_audio(source_file_path, destination_file_path)
+        convert_and_copy_audio(source_file_path, destination_file_path, gain)
 
 if __name__ == "__main__":
     process_files()
