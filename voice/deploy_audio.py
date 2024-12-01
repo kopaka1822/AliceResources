@@ -10,8 +10,14 @@ FORCE_MONO = True  # Force mono audio for mp3 export
 
 # Character-specific settings
 CHARACTER_SETTINGS = {
-    "alice": {"gain": 6}, 
-    "n": {"gain": 6},   
+    "alice": {"gain": 5}, 
+    "n": {"gain": 7},   
+    "dodo": {"gain": 4},
+    "mouse": {"gain": -3},
+    "eaglet": {"gain": -2},
+    "lory": {"gain": 3},
+    "canry": {"gain": 3},
+    "pigeon": {"gain": 3},
 }
 
 def get_character_settings(file_name):
