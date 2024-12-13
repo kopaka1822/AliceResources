@@ -4,7 +4,7 @@ from pydub import AudioSegment
 # Define source and destination directories, and overwrite flag
 SOURCE_DIR = "C:/git/AliceResources/voice"
 DEST_DIR = "C:/git/AliceWonderland/game/voice"
-OVERWRITE = True  # Set to False to skip existing files
+OVERWRITE = False  # Set to False to skip existing files
 SAMPLE_RATE = 44100  # Configurable sample rate (44100 by default)
 FORCE_MONO = True  # Force mono audio for mp3 export
 
@@ -22,6 +22,8 @@ CHARACTER_SETTINGS = {
     "old_crab": {"gain": 6},
     "duchess": {"gain": 3},
     "caterpillar": {"gain": 7},
+    "mock": {"gain": -4},
+    "frogfoot": {"gain": 5},
 }
 
 def get_character_settings(file_name):
