@@ -28,6 +28,7 @@ CHARACTER_SETTINGS = {
     "frogfoot": {"gain": 7},
     "hatter": {"gain": 2},
     "dormouse": {"gain": 4},
+    "na": {"gain": 7},
 }
 
 def get_character_settings(file_name):
