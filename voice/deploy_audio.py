@@ -22,13 +22,14 @@ CHARACTER_SETTINGS = {
     "magpie": {"gain": 2},
     "pigeon": {"gain": 11},
     "old_crab": {"gain": 6},
-    "duchess": {"gain": 6},
+    "duchess": {"gain": 5},
     "caterpillar": {"gain": 9},
     "mock": {"gain": -4},
     "frogfoot": {"gain": 7},
     "hatter": {"gain": 2},
     "dormouse": {"gain": 4},
     "na": {"gain": 7},
+    "soldiers": {"gain": -4},
 }
 
 def get_character_settings(file_name):
