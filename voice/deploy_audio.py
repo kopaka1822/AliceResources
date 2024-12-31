@@ -1,4 +1,5 @@
 import os
+import re
 from pydub import AudioSegment
 
 # Define source and destination directories, and overwrite flag
@@ -12,7 +13,12 @@ FORCE_MONO = True  # Force mono audio for mp3 export
 
 # Character-specific settings
 CHARACTER_SETTINGS = {
-    "alice": {"gain": 4}, 
+    "alice": {
+        "gain": 3,
+        "filters": [
+            {"range": "1-136", "gain": 7},
+        ]
+    }, 
     "n": {"gain": 7},   
     "dodo": {"gain": 6},
     "mouse": {"gain": -3},
@@ -32,14 +38,41 @@ CHARACTER_SETTINGS = {
     "soldiers": {"gain": -4},
 }
 
+def matches_range(number_range, file_name):
+    """
+    Check if the numeric part of the file name matches the specified range.
+    Supports ranges like 1-57 or 001-057.
+    """
+    match = re.search(r'(\d+)', file_name)
+    if not match:
+        return False
+
+    file_number = int(match.group(1))
+    range_match = re.match(r'(\d+)-(\d+)', number_range)
+    if not range_match:
+        return False
+
+    start, end = map(int, range_match.groups())
+    return start <= file_number <= end
+
 def get_character_settings(file_name):
     """
     Extract the character prefix from the file name and return the settings.
-    Default to no gain adjustment if no specific settings are found.
+    Use number ranges to determine specific gains.
     """
-    # Extract prefix by removing digits and extension
     prefix = ''.join([c for c in os.path.splitext(file_name)[0] if not c.isdigit()]).rstrip('_')
-    return CHARACTER_SETTINGS.get(prefix, {"gain": 0})
+    settings = CHARACTER_SETTINGS.get(prefix, {"gain": 0})
+
+    # Check for specific filters
+    filters = settings.get("filters", [])
+    for filter_entry in filters:
+        number_range = filter_entry.get("range")
+        gain = filter_entry.get("gain", settings["gain"])
+        if matches_range(number_range, file_name):
+            return {"gain": gain}
+
+    # Default gain if no filters match
+    return {"gain": settings["gain"]}
 
 def convert_and_copy_audio(source_file, destination_file, gain):
     # Load audio file
