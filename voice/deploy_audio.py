@@ -3,10 +3,10 @@ import re
 from pydub import AudioSegment
 
 # Define source and destination directories, and overwrite flag
-#SOURCE_DIR = "C:/git/AliceResources/voice"
-#DEST_DIR = "C:/git/AliceWonderland/game/voice"
-SOURCE_DIR = "C:/Users/Felix/Documents/git/alice/AliceResources/voice"
-DEST_DIR = "C:/Users/Felix/Documents/git/alice/AliceInWonderland/game/voice"
+SOURCE_DIR = "C:/git/AliceResources/voice"
+DEST_DIR = "C:/git/AliceWonderland/game/voice"
+#SOURCE_DIR = "C:/Users/Felix/Documents/git/alice/AliceResources/voice"
+#DEST_DIR = "C:/Users/Felix/Documents/git/alice/AliceInWonderland/game/voice"
 OVERWRITE = False  # Set to False to skip existing files
 SAMPLE_RATE = 44100  # Configurable sample rate (44100 by default)
 FORCE_MONO = True  # Force mono audio for mp3 export
