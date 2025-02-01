@@ -16,8 +16,9 @@ CHARACTER_SETTINGS = {
     "alice": {
         "gain": 3,
         "filters": [
-            {"range": "1-136", "gain": 7},
+            {"range": "48-136", "gain": 7},
             {"range": "375-386", "gain": 0},
+            {"range": "30-47", "gain": 0}
         ]
     }, 
     "n": {"gain": 7},   
@@ -29,7 +30,11 @@ CHARACTER_SETTINGS = {
     "magpie": {"gain": 2},
     "pigeon": {"gain": 11},
     "old_crab": {"gain": 6},
-    "duchess": {"gain": 5},
+    "duchess": {
+        "gain": 5,
+        "filters": [
+            {"range": "1-1", "gain": 0},
+        ]},
     "caterpillar": {"gain": 9},
     "mock": {"gain": -4},
     "frogfoot": {"gain": 7},
