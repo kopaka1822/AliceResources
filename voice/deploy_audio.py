@@ -7,7 +7,7 @@ SOURCE_DIR = "C:/git/AliceResources/voice"
 DEST_DIR = "C:/git/AliceWonderland/game/voice"
 #SOURCE_DIR = "C:/Users/Felix/Documents/git/alice/AliceResources/voice"
 #DEST_DIR = "C:/Users/Felix/Documents/git/alice/AliceInWonderland/game/voice"
-OVERWRITE = False  # Set to False to skip existing files
+OVERWRITE = True  # Set to False to skip existing files
 SAMPLE_RATE = 44100  # Configurable sample rate (44100 by default)
 FORCE_MONO = True  # Force mono audio for mp3 export
 
@@ -21,7 +21,7 @@ CHARACTER_SETTINGS = {
             {"range": "30-83", "gain": 0}
         ]
     }, 
-    "n": {"gain": 7},   
+    "n": {"gain": 8},   
     "dodo": {"gain": 6},
     "mouse": {"gain": -3},
     "eaglet": {"gain": -2},
@@ -39,10 +39,13 @@ CHARACTER_SETTINGS = {
     "mock": {"gain": -5},
     "frogfoot": {"gain": 7},
     "hatter": {"gain": 3.5},
-    "dormouse": {"gain": 5},
+    "dormouse": {"gain": 7},
     "na": {"gain": 7},
     "sister": {"gain": 5},
     "soldiers": {"gain": -4},
+    "gryphon": {"gain": 2},
+    "rabbit": {"gain": 2},
+    "bill": {"gain": 2},
 }
 
 def matches_range(number_range, file_name):
