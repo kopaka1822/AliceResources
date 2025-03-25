@@ -7,7 +7,7 @@ SOURCE_DIR = "C:/git/AliceResources/voice"
 DEST_DIR = "C:/git/AliceWonderland/game/voice"
 #SOURCE_DIR = "C:/Users/Felix/Documents/git/alice/AliceResources/voice"
 #DEST_DIR = "C:/Users/Felix/Documents/git/alice/AliceInWonderland/game/voice"
-OVERWRITE = True  # Set to False to skip existing files
+OVERWRITE = False  # Set to False to skip existing files
 SAMPLE_RATE = 44100  # Configurable sample rate (44100 by default)
 FORCE_MONO = True  # Force mono audio for mp3 export
 
@@ -16,14 +16,14 @@ CHARACTER_SETTINGS = {
     "alice": {
         "gain": 3,
         "filters": [
-            {"range": "84-136", "gain": 7},
+            {"range": "84-136", "gain": 6},
             {"range": "375-386", "gain": 0},
             {"range": "30-83", "gain": 0}
         ]
     }, 
     "n": {"gain": 8},   
-    "dodo": {"gain": 6},
-    "mouse": {"gain": -3},
+    "dodo": {"gain": 7},
+    "mouse": {"gain": -2},
     "eaglet": {"gain": -2},
     "lory": {"gain": 4},
     "canary": {"gain": 8},
@@ -31,14 +31,14 @@ CHARACTER_SETTINGS = {
     "pigeon": {"gain": 11},
     "old_crab": {"gain": 6},
     "duchess": {
-        "gain": 4,
+        "gain": 6,
         "filters": [
-            {"range": "1-1", "gain": 0},
+            {"range": "1-1", "gain": 2},
         ]},
-    "caterpillar": {"gain": 9},
+    "caterpillar": {"gain": 11},
     "mock": {"gain": -5},
     "frogfoot": {"gain": 7},
-    "hatter": {"gain": 3.5},
+    "hatter": {"gain": 6},
     "dormouse": {"gain": 7},
     "na": {"gain": 7},
     "sister": {"gain": 5},
@@ -46,6 +46,8 @@ CHARACTER_SETTINGS = {
     "gryphon": {"gain": 2},
     "rabbit": {"gain": 2},
     "bill": {"gain": 2},
+    "cat": {"gain": 1},
+    "two": {"gain": 2},
 }
 
 def matches_range(number_range, file_name):
