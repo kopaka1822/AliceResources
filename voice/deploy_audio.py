@@ -4,12 +4,14 @@ from pydub import AudioSegment
 
 # Define source and destination directories, and overwrite flag
 SOURCE_DIR = "C:/git/AliceResources/voice"
-DEST_DIR = "C:/git/AliceWonderland/game/voice"
+DEST_DIR = "C:/git/AliceResources/voiceNormalized"
+#DEST_DIR = "C:/git/AliceWonderland/game/voice"
 #SOURCE_DIR = "C:/Users/Felix/Documents/git/alice/AliceResources/voice"
 #DEST_DIR = "C:/Users/Felix/Documents/git/alice/AliceInWonderland/game/voice"
 OVERWRITE = False  # Set to False to skip existing files
 SAMPLE_RATE = 44100  # Configurable sample rate (44100 by default)
 FORCE_MONO = True  # Force mono audio for mp3 export
+FORMAT = "wav"  # Output format
 
 # Character-specific settings
 CHARACTER_SETTINGS = {
@@ -38,7 +40,7 @@ CHARACTER_SETTINGS = {
     "caterpillar": {"gain": 11},
     "mock": {"gain": -5},
     "frogfoot": {"gain": 7},
-    "hatter": {"gain": 6},
+    "hatter": {"gain": 2},
     "dormouse": {"gain": 7},
     "na": {"gain": 7},
     "sister": {"gain": 5},
@@ -100,7 +102,7 @@ def convert_and_copy_audio(source_file, destination_file, gain):
         audio = audio.set_channels(1)
 
     # Export the audio as mp3
-    audio.export(destination_file, format="mp3")
+    audio.export(destination_file, format=FORMAT)
     print(f"Converted and saved: {destination_file}")
 
 def process_files():
@@ -114,7 +116,7 @@ def process_files():
     # Check each file in the source directory
     for file_name in source_files:
         source_file_path = os.path.join(SOURCE_DIR, file_name)
-        destination_file_name = os.path.splitext(file_name)[0] + ".mp3"
+        destination_file_name = os.path.splitext(file_name)[0] + "." + FORMAT
         destination_file_path = os.path.join(DEST_DIR, destination_file_name)
 
         # Skip file if it exists and overwrite is False
